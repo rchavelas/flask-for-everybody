@@ -1,7 +1,7 @@
 """
 This is a boilerplate for the simplest web application in Flask
 
-It is recomended to create a virtual environment whenever working
+It is recommended to create a virtual environment whenever working
 with a flask application. To do so run in the console: 
     
     'python3 -m venv venv'
