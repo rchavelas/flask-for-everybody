@@ -5,13 +5,14 @@ It is recommended to create a virtual environment whenever working
 with a flask application. To do so run in the console: 
     
     'python3 -m venv venv'
+    'venv\Scripts\activate' (if in windows)
 
 Make sure to first install Flask in the console with:
     
     'pip install Flask'
 
 To run the application, run in the console within the file's directory:
-    
+
     'flask run --debug'
 
 """
@@ -24,4 +25,4 @@ def index():
     return 'Hello, World'
 
 if __name__ == '__main__':
-    app.run
+    app.run()
