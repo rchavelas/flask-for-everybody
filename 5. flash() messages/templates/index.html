@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> {% block title %} Using forms in Flask {% endblock %} </h1>
+
+    {% for message in get_flashed_messages() %}
+        <p class="flashed_message">
+            {{ message }}
+        </p>
+    {% endfor %}
+
+    <h2>List items: </h2>
+    <ul>
+        {% for item in my_list %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" action="/">
+        <label for="new_item">New item</label>
+        <input type="text" name="new_item">
+
+        <button type="submit">Submit</button>
+    </form>
+
+{% endblock %}
