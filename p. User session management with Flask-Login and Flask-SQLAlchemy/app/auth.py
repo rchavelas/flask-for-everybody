@@ -32,7 +32,7 @@ def signup():
         user = db.session.scalars(db.select(User).where(User.email==email)).first()
         if user:
             return redirect(url_for('auth.login'))
-        # Validate if both passwords subbmited are the same
+        # Validate if both passwords submitted are the same
         if password != confirm_password:
             return redirect(url_for('auth.signup'))
         # Create new user
