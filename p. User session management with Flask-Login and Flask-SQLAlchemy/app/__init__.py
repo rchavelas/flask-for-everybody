@@ -8,8 +8,7 @@ with:
     'pip install flask-login flask-sqlalchemy'
 
 For a more traditional tutorial regarding the use of this packages see:
-https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login#step-5-creating-user-models
-
+ - https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login#step-5-creating-user-models
 """
 
 import os
@@ -19,6 +18,9 @@ from flask_login import LoginManager
 
 DB_NAME = 'db.sqlite'
 db = SQLAlchemy()
+
+login_manager = LoginManager()
+login_manager.login_view = 'auth.login'
 
 def create_app():
     app = Flask(__name__)
@@ -38,11 +40,8 @@ def create_app():
     from .models import User
     create_database(app)
 
-    # Define the login manager
-    login_manager = LoginManager()
-    login_manager.login_view = 'auth.login'
+    # Initialize the login manager
     login_manager.init_app(app)
-
     @login_manager.user_loader
     def user_loader(id):
         return db.session.get(User,int(id))
