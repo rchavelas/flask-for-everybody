@@ -27,5 +27,6 @@ g. Loading .env and .flaskenv files
 h. Basic user session management with Flask-Login
 i. Using the application factory pattern
 j. Using the application factory pattern with blueprints
+k. Applications as Packages (with the __init__.py file)
 p. User session management with Flask-Login and Flask-SQLAlchemy
 q. User session management with Flask-Login, Flask-SQLAlchemy and Flask-Bcrypt
