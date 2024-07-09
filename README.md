@@ -15,18 +15,18 @@ from the command line in each directory:
 
     flask run --debug
 
-The following snippets are provided: 
+## List of snippets: 
 
-a. The simplest Flask web application 
-b. Rendering HTML Templates (via the render_template function) 
-c. Template inheritance 
-d. Using forms and GET-POST requests 
-e. flash() messages 
-f. Using variables in routes 
-g. Loading .env and .flaskenv files 
-h. Basic user session management with Flask-Login 
-i. Using the application factory pattern 
-j. Using the application factory pattern with blueprints 
-k. Applications as Packages (with the __init__.py file) 
-p. User session management with Flask-Login and Flask-SQLAlchemy 
-q. User session management with Flask-Login, Flask-SQLAlchemy and Flask-Bcrypt 
+* a. The simplest Flask web application 
+* b. Rendering HTML Templates (via the render_template function)
+* c. Template inheritance 
+* d. Using forms and GET-POST requests 
+* e. flash() messages 
+* f. Using variables in routes 
+* g. Loading .env and .flaskenv files 
+* h. Basic user session management with Flask-Login 
+* i. Using the application factory pattern 
+* j. Using the application factory pattern with blueprints 
+* k. Applications as Packages (with the __init__.py file) 
+* p. User session management with Flask-Login and Flask-SQLAlchemy 
+* q. User session management with Flask-Login, Flask-SQLAlchemy and Flask-Bcrypt 
