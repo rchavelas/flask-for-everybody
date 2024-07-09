@@ -17,7 +17,7 @@ from the command line in each directory:
 
 ## List of snippets: 
 
-* a. The simplest Flask web application 
+* (a. The simplest Flask web application)[https://github.com/rchavelas/flask-for-everybody/tree/main/a.%20The%20simplest%20Flask%20web%20application] 
 * b. Rendering HTML Templates (via the render_template function)
 * c. Template inheritance 
 * d. Using forms and GET-POST requests 
