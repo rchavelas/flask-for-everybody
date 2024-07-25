@@ -29,5 +29,6 @@ from the command line in each directory:
 * j. Using the application factory pattern with blueprints 
 * k. Applications as Packages (with the \_\_init\_\_.py file)
 * l. Uploading and downloading files
+* m. Connecting to a SQLite database (using the sqlite3 package)
 * p. User session management with Flask-Login and Flask-SQLAlchemy 
 * q. User session management with Flask-Login, Flask-SQLAlchemy and Flask-Bcrypt 

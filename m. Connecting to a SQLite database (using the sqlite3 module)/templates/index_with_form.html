@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<title>Items</title>
+
+<h1>Database items</h1>
+
+{% for item in items %}
+  <p>{{ item["content"] }}</p>
+{% endfor %}
+
+<form method=post>
+  <input type=text name=content>
+  <input type=submit value="New item">
+</form>
