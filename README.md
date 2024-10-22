@@ -30,5 +30,6 @@ from the command line in each directory:
 * k. Applications as Packages (with the \_\_init\_\_.py file)
 * l. Uploading and downloading files
 * m. Connecting to a SQLite database (using the sqlite3 package)
+* n. Storing serialized objects (class instances) into SQLite db
 * p. User session management with Flask-Login and Flask-SQLAlchemy 
 * q. User session management with Flask-Login, Flask-SQLAlchemy and Flask-Bcrypt 
