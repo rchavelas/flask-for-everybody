@@ -162,3 +162,4 @@ cython_debug/
 # Others
 todo.md
 *.db
+/z. test_folder
