@@ -31,5 +31,7 @@ from the command line in each directory:
 * l. Uploading and downloading files
 * m. Connecting to a SQLite database (using the sqlite3 package)
 * n. Storing serialized objects (class instances) into SQLite db
-* p. User session management with Flask-Login and Flask-SQLAlchemy 
-* q. User session management with Flask-Login, Flask-SQLAlchemy and Flask-Bcrypt 
+* o. Handling exceptions when connecting to a SQLite db (using the sqlite3 package)
+* p. CRUD application (using the sqlite3 package)
+* t. User session management with Flask-Login and Flask-SQLAlchemy 
+* u. User session management with Flask-Login, Flask-SQLAlchemy and Flask-Bcrypt 
