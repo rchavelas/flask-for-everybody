@@ -3,3 +3,18 @@
 <title>Items</title>
 
 <h1>Database items</h1>
+
+{% for item in items %}
+    <p>{{ item["content"] }}</p>
+{% endfor %}
+
+<form method="post">
+    <input type="text" name="content" required>
+    <input type="submit" value="New item">
+</form>
+
+{% for message in get_flashed_messages() %}
+    <p class="flashed_message" style="color:crimson">
+        {{ message }}
+    </p>
+{% endfor %}
