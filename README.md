@@ -32,6 +32,6 @@ from the command line in each directory:
 * m. Connecting to a SQLite database (using the sqlite3 package)
 * n. Storing serialized objects (class instances) into SQLite db
 * o. Handling exceptions when connecting to a SQLite db (using the sqlite3 package)
-* p. CRUD application (using the sqlite3 package)
+* p. User session management with Flask-Login and sqlite3
 * t. User session management with Flask-Login and Flask-SQLAlchemy 
 * u. User session management with Flask-Login, Flask-SQLAlchemy and Flask-Bcrypt 

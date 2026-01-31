@@ -1,7 +1,6 @@
 """
 This is a boilerplate for doing very basic session management using 
-the Flask-Login package. According to its README, this basic example is
-just for demonstration purposes, never to be used in a real application. 
+the Flask-Login package. 
 
 See: https://github.com/maxcountryman/flask-login?tab=readme-ov-file
 
@@ -11,8 +10,8 @@ Make sure to first install Flask-Login in the console with:
 
 """
 from flask import Flask, request, redirect, url_for, render_template_string
-from flask_login import LoginManager, login_required, current_user
-from flask_login import login_user, logout_user
+from flask_login import (LoginManager, login_required, current_user,
+                         login_user, logout_user)
 from models import User
 
 # Authorized users (using a list as a simple representation of a database)
