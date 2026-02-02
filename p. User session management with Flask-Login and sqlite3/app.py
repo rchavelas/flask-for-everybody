@@ -3,9 +3,8 @@ This is a boilerplate for doing a basic session management using
 the Flask-Login module along with sqlite3. 
 
 Make sure to open a terminal and run 'python init_db.py' to initialize the 
-database before running the application.
-
-Make sure to first install Flask-Login in the console with:
+database before running the application and make sure to first install 
+Flask-Login in the terminal with:
     'pip install flask-login'
 """
 
@@ -14,21 +13,25 @@ from flask_login import (LoginManager, UserMixin, login_user,
                             login_required, logout_user, current_user)
 import sqlite3
 
-# Define a function to get a user from the db by its username
-def get_user_by_username(username):
+# Define a function to get the user info from the db by its email
+def get_user_by_email(email):
     conn = sqlite3.connect('users.db')
     conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM users WHERE username = ?', (username,))
+    cursor.execute('SELECT * FROM users WHERE email = ?', (email,))
     db_record = cursor.fetchone()
     conn.close()
     return db_record
 
-# Define a basic User object for flask-login to hold user properties,
-# this represents a user within the aplication (requires a unique user identifier)
+# Define a basic User model for flask-login to hold user properties,
+# this represents a user within the aplication (requires a unique user 
+# identifier, which I find it easier to relate to the email of a user)
 class User(UserMixin):
-    def __init__(self, id):
-        self.id = id
+    def __init__(self, email):
+        self.email = email
+    
+    def get_id(self):
+        return self.email
 
 def create_app():
     app = Flask(__name__)
@@ -38,15 +41,15 @@ def create_app():
     login_manager.init_app(app)
     login_manager.login_view = 'login'
 
-    # Create user instances from a loader callback to reload users from the
-    # ID stored in the session
+    # Create for each request a user instance based on the unique identifier 
+    # stored in the session
     @login_manager.user_loader
-    def load_user(user_id):
-        # Fetch against the database a user by 'user_id' 
-        db_user = get_user_by_username(user_id)
+    def load_user(email):
+        # Fetch against the database a user by its 'email' field 
+        db_user = get_user_by_email(email)
         if db_user is not None:
-            # Create and return a new object of 'User' class and return it.
-           return User(id=db_user['username'])
+            # Create and return a new object of 'User' class.
+           return User(email=db_user['email'])
         return None
 
     @app.route('/login', methods=('GET', 'POST'))
@@ -56,17 +59,17 @@ def create_app():
             return redirect(url_for('protected'))
 
         if request.method == 'POST':
-            username = request.form['username']
+            email = request.form['email']
             password = request.form['password']
-            db_record = get_user_by_username(username)
+            db_record = get_user_by_email(email)
 
             if db_record and password == db_record['password']:
-                user = User(id=db_record['username'])
+                user = User(email=db_record['email'])
                 login_user(user)
                 return redirect(url_for('protected'))
 
         return """<form method=post>
-                Username: <input name="username" type="text"><br><br>
+                Email: <input name="email" type="text"><br><br>
                 Password: <input name="password" type="password"><br><br>
                 <button>Log In</button>
                 </form>
@@ -76,7 +79,7 @@ def create_app():
     @login_required
     def protected():
         return render_template_string(
-            'Logged in as: {{ user.id }}',
+            'Logged in as: {{ user.email }}',
             user=current_user)
 
     @app.route('/logout')
@@ -84,6 +87,5 @@ def create_app():
     def logout():
         logout_user()
         return redirect(url_for('login'))
-
 
     return app
