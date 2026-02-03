@@ -35,3 +35,4 @@ from the command line in each directory:
 * p. User session management with Flask-Login and sqlite3
 * t. User session management with Flask-Login and Flask-SQLAlchemy 
 * u. User session management with Flask-Login, Flask-SQLAlchemy and Flask-Bcrypt 
+* v. Using forms with Flask-WTF
