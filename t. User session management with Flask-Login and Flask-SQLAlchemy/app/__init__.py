@@ -1,6 +1,6 @@
 """
 This is a boilerplate for doing a very simple session management app using 
-Flask-Login and Flask-SQLAlchemy.
+Flask-Login and Flask-SQLAlchemy (hashing passwords with werkzeug.security).
 
 Make sure to first install Flask-Login and Flask-SQLAlchemy in the console 
 with:
@@ -40,7 +40,7 @@ def create_app():
     from .models import User
     create_database(app)
 
-    # Initialize the login manager
+    # Initialize the login manager and define the user loader
     login_manager.init_app(app)
     @login_manager.user_loader
     def user_loader(id):

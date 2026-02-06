@@ -1,6 +1,6 @@
 """
 This is a boilerplate for doing a basic session management using
-the Flask-Login module along with sqlite3. 
+the Flask-Login module along with sqlite3 and werkzeug.security for password hashing. 
 
 Make sure to open a terminal and run 'python init_db.py' to initialize the 
 database before running the application and make sure to first install 
@@ -11,6 +11,7 @@ Flask-Login in the terminal with:
 from flask import Flask, render_template_string, request, url_for, redirect
 from flask_login import (LoginManager, UserMixin, login_user, 
                             login_required, logout_user, current_user)
+from werkzeug.security import check_password_hash
 import sqlite3
 
 # Define a function to get the user info from the db by its email
@@ -22,6 +23,10 @@ def get_user_by_email(email):
     db_record = cursor.fetchone()
     conn.close()
     return db_record
+
+# Initialize the login manager
+login_manager = LoginManager()
+login_manager.login_view = 'login'
 
 # Define a basic User model for flask-login to hold user properties,
 # this represents a user within the aplication (requires a unique user 
@@ -37,9 +42,7 @@ def create_app():
     app = Flask(__name__)
     app.secret_key = 'secret_key'
 
-    login_manager = LoginManager()
     login_manager.init_app(app)
-    login_manager.login_view = 'login'
 
     # Create for each request a user instance based on the unique identifier 
     # stored in the session
@@ -52,18 +55,19 @@ def create_app():
            return User(email=db_user['email'])
         return None
 
-    @app.route('/login', methods=('GET', 'POST'))
+    @app.route('/login', methods=['GET', 'POST'])
     def login():
         # Redirect to protected view if authenticated (nice to have option)
         if current_user.is_authenticated:
             return redirect(url_for('protected'))
 
         if request.method == 'POST':
+            # Get form information
             email = request.form['email']
             password = request.form['password']
+            # Validate if user exists
             db_record = get_user_by_email(email)
-
-            if db_record and password == db_record['password']:
+            if db_record and check_password_hash(db_record['password_hash'], password):
                 user = User(email=db_record['email'])
                 login_user(user)
                 return redirect(url_for('protected'))
