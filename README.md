@@ -33,6 +33,7 @@ from the command line in each directory:
 * n. Storing serialized objects (class instances) into SQLite db
 * o. Handling exceptions when connecting to a SQLite db (using the sqlite3 package)
 * p. User session management with Flask-Login and sqlite3
+* q. User session management with Flask-Login, sqlite3 and werkzeug.security (for password hasing)
 * t. User session management with Flask-Login and Flask-SQLAlchemy 
 * u. User session management with Flask-Login, Flask-SQLAlchemy and Flask-Bcrypt 
 * v. Using forms with Flask-WTF
